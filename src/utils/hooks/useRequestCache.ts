@@ -7,19 +7,19 @@ type Cache = {
   time: number;
 };
 
-const requestCache = new Map<string, Cache>();
+const requestCache = new Map<string | number, Cache>();
 
 type Options<T> = {
-  key: string;
+  key: string | number;
   fetcher: () => Promise<T>;
-  /** 缓存有效期（ms），默认 5 分钟 */
+  /** 缓存有效期（ms），默认 3分钟 */
   ttl?: number;
 };
 
 export default function useRequestCache<T>({
   key,
   fetcher,
-  ttl = 1000 * 60 * 5,
+  ttl = 1000 * 60 * 3,
 }: Options<T>) {
   const [data, setData] = useState<T | null>(() => {
     const cached = requestCache.get(key);
@@ -37,6 +37,7 @@ export default function useRequestCache<T>({
 
     // 命中缓存，不再请求
     if (cached && Date.now() - cached.time < cached.ttl) {
+      setData(cached.data as T);
       devLog("缓存命中", key);
       return;
     }
@@ -74,7 +75,7 @@ export default function useRequestCache<T>({
         if (cancel) return;
         setData(res);
         requestCache.set(key, { data: res, time: Date.now(), ttl });
-        devLog("刷新并缓存", key);
+        devLog("重新缓存", key);
       })
       .catch((err) => {
         if (cancel) return;
@@ -92,6 +93,7 @@ export default function useRequestCache<T>({
   setTimeout(() => {
     requestCache.forEach((cache, key) => {
       if (Date.now() - cache.time > cache.ttl) {
+        devLog("缓存过期", key);
         requestCache.delete(key);
       }
     });

@@ -24,7 +24,7 @@ export interface Item {
   /** The story's score, or the votes for a pollopt. */
   score: number;
   /** The title of the story, poll or job. HTML. */
-  title: string;
+  title?: string;
   /** A list of related pollopts, in display order. */
   parts?: number[];
   /** In the case of stories or polls, the total comment count. */
