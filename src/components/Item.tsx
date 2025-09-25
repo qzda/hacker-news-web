@@ -23,7 +23,7 @@ export default function Item(props: {
   });
 
   return (
-    <div className="com-item">
+    <article className="com-item">
       {data && (
         <>
           {data.title && (
@@ -85,10 +85,10 @@ export default function Item(props: {
         </>
       )}
       {!data && (
-        <div className="my-3 flex justify-center text-gray">
-          <i className="i-carbon:rotate-180 animate-rotate" />
+        <div className="my-3 flex items-center justify-center gap-2 text-gray">
+          <i className="i-carbon:rotate-180 animate-rotate" /> Loading...
         </div>
       )}
-    </div>
+    </article>
   );
 }

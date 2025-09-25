@@ -10,6 +10,7 @@ import Nav from "./components/Nav.tsx";
 import Footer from "./components/Footer.tsx";
 import IndexPage from "./pages/index.tsx";
 import ItemPage from "./pages/item.tsx";
+import NotFoundPage from "./pages/not-found.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -29,7 +30,7 @@ createRoot(document.getElementById("root")!).render(
 
           <Route
             path="*"
-            element={<div>404</div>}
+            element={<NotFoundPage />}
           />
         </Routes>
       </div>
