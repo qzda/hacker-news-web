@@ -4,9 +4,11 @@ import { fetchItemById } from "../api";
 import useRequestCache from "../utils/hooks/useRequestCache";
 import { shortUrl } from "../utils/url";
 import { Link } from "react-router";
+import { isDev } from "../utils/dev";
 
 export default function Item(props: {
   id: string | number;
+  showMore?: boolean;
   className?: string | undefined;
 }) {
   const { id } = props;
@@ -27,7 +29,7 @@ export default function Item(props: {
           {data.title && (
             <div className="flex items-center gap-2">
               <a
-                className="font-serif link"
+                className={`font-serif font-bold link ${props.showMore ? "text-xl" : ""}`}
                 href={data.url}
                 target="_blank"
               >
@@ -39,6 +41,7 @@ export default function Item(props: {
                   <i className="i-carbon:link" /> {shortUrl(data.url)}
                 </span>
               )}
+              {isDev && <span className="bg-yellow px-1">{data.type}</span>}
             </div>
           )}
           {data.type === "comment" && (
@@ -51,7 +54,7 @@ export default function Item(props: {
               </span>
             </div>
           )}
-          {data.text && (
+          {props.showMore && data.text && (
             <p
               className="text-sm p-2"
               dangerouslySetInnerHTML={{ __html: data.text }}
@@ -64,7 +67,7 @@ export default function Item(props: {
                 className="link"
               >
                 {data.type === "story" && <span>{data.score} points by </span>}
-                <span className="text-gray-800 dark:text-gray-100">
+                <span className="text-gray-800! dark:text-gray-100!">
                   {data.by}{" "}
                 </span>
                 <span title={new Date(data.time * 1000).toLocaleString()}>

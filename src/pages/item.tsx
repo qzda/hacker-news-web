@@ -12,21 +12,25 @@ export default function ItemPage() {
   }, [id]);
 
   const { data } = useRequestCache({
-    key: "item" + id,
+    key: id,
     fetcher: fetchItem,
   });
 
   return (
     <div className="page-item">
       <div className="mb-6">
-        <Item id={id} />
+        <Item
+          id={id}
+          showMore
+        />
       </div>
 
-      <div className="comments">
-        <h2>Comments</h2>
-        <ul>
-          {data?.kids &&
-            data.kids.map((kid) => {
+      {data?.kids && (
+        <div className="comments">
+          <h2>Comments</h2>
+          <ul>
+            {/* todo 翻页器 */}
+            {data.kids.slice(0, 10).map((kid) => {
               return (
                 <li
                   key={kid}
@@ -35,12 +39,14 @@ export default function ItemPage() {
                   <Item
                     className="flex-1"
                     id={kid}
+                    showMore
                   />
                 </li>
               );
             })}
-        </ul>
-      </div>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
