@@ -1,9 +1,9 @@
 import { useCallback } from "react";
+import { Link } from "react-router";
 import * as timeago from "timeago.js";
 import { fetchItemById } from "../api";
 import useRequestCache from "../utils/hooks/useRequestCache";
 import { shortUrl } from "../utils/url";
-import { Link } from "react-router";
 import { isDev } from "../utils/dev";
 
 export default function Item(props: {
@@ -68,6 +68,7 @@ export default function Item(props: {
           )}
           {data.type === "comment" && (
             <div className="text-sm text-gray-400  flex gap-2">
+              {/* todo 跳转到user页面 */}
               <span className="link text-gray-800 dark:text-gray-100">
                 {data.by}
               </span>
