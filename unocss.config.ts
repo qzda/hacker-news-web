@@ -1,8 +1,8 @@
 import {
   defineConfig,
-  presetAttributify,
   presetIcons,
   presetMini,
+  presetWebFonts,
   presetWind4,
 } from "unocss";
 
@@ -45,7 +45,12 @@ export default defineConfig({
       dark: "media",
     }),
     presetWind4(),
-    presetAttributify(),
+    presetWebFonts({
+      provider: "none",
+      fonts: {
+        serif: ["Times New Roman", "Times", "ui-serif", "serif"],
+      },
+    }),
     presetIcons({
       extraProperties: {
         display: "inline-block",
