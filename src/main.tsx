@@ -7,6 +7,7 @@ import "virtual:uno.css";
 axios.defaults.baseURL = "https://hacker-news.firebaseio.com/v0/";
 
 import Nav from "./components/Nav.tsx";
+import Footer from "./components/Footer.tsx";
 import IndexPage from "./pages/index.tsx";
 import ItemPage from "./pages/item.tsx";
 
@@ -32,6 +33,7 @@ createRoot(document.getElementById("root")!).render(
           />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   </StrictMode>
 );
