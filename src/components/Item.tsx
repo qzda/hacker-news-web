@@ -18,7 +18,7 @@ export default function Item(props: {
   }, [id]);
 
   const { data } = useRequestCache({
-    key: id,
+    key: String(id),
     fetcher: fetchItem,
   });
 
@@ -27,7 +27,7 @@ export default function Item(props: {
       {data && (
         <>
           {data.title && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center flex-wrap gap-2">
               <a
                 className={`font-serif font-bold link ${props.showMore ? "text-xl" : ""}`}
                 href={data.url}
@@ -37,7 +37,7 @@ export default function Item(props: {
               </a>
               {data.url && (
                 // todo 点击筛选短链
-                <span className="mx-2 text-sm text-gray-400 op-75 hover:op-100 link">
+                <span className="text-sm text-gray-400 op-75 hover:op-100 link">
                   <i className="i-carbon:link" /> {shortUrl(data.url)}
                 </span>
               )}
@@ -56,12 +56,12 @@ export default function Item(props: {
           )}
           {props.showMore && data.text && (
             <p
-              className="text-sm p-2"
+              className="item-text text-sm p-2 overflow-auto"
               dangerouslySetInnerHTML={{ __html: data.text }}
             ></p>
           )}
           {["story", "poll"].includes(data.type) && (
-            <div className="text-sm text-gray-400 flex gap-2">
+            <div className="text-sm text-gray-400 flex flex-wrap gap-2">
               <Link
                 to={`/item/${data.id}`}
                 className="link"

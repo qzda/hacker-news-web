@@ -10,7 +10,7 @@ type Cache = {
 const requestCache = new Map<string | number, Cache>();
 
 type Options<T> = {
-  key: string | number;
+  key: string;
   fetcher: () => Promise<T>;
   /** 缓存有效期（ms），默认 3分钟 */
   ttl?: number;
