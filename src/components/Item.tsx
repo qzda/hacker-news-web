@@ -23,7 +23,7 @@ export default function Item(props: {
   });
 
   return (
-    <article className="com-item">
+    <div className="com-item">
       {data && (
         <>
           {data.title && (
@@ -89,6 +89,6 @@ export default function Item(props: {
           <i className="i-carbon:rotate-180 animate-rotate" /> Loading...
         </div>
       )}
-    </article>
+    </div>
   );
 }
