@@ -44,22 +44,6 @@ export default function Item(props: {
               {isDev && <span className="bg-yellow px-1">{data.type}</span>}
             </div>
           )}
-          {data.type === "comment" && (
-            <div className="text-sm text-gray-400  flex gap-2">
-              <span className="link text-gray-800 dark:text-gray-100">
-                {data.by}
-              </span>
-              <span title={new Date(data.time * 1000).toLocaleString()}>
-                {timeago.format(new Date(data.time * 1000))}
-              </span>
-            </div>
-          )}
-          {props.showMore && data.text && (
-            <p
-              className="item-text text-sm p-2 overflow-auto"
-              dangerouslySetInnerHTML={{ __html: data.text }}
-            ></p>
-          )}
           {["story", "poll"].includes(data.type) && (
             <div className="text-sm text-gray-400 flex flex-wrap gap-0 sm:gap-2">
               <Link
@@ -81,6 +65,22 @@ export default function Item(props: {
                 {data.descendants} comments
               </Link>
             </div>
+          )}
+          {data.type === "comment" && (
+            <div className="text-sm text-gray-400  flex gap-2">
+              <span className="link text-gray-800 dark:text-gray-100">
+                {data.by}
+              </span>
+              <span title={new Date(data.time * 1000).toLocaleString()}>
+                {timeago.format(new Date(data.time * 1000))}
+              </span>
+            </div>
+          )}
+          {props.showMore && data.text && (
+            <p
+              className="item-text text-sm p-2 overflow-auto"
+              dangerouslySetInnerHTML={{ __html: data.text }}
+            ></p>
           )}
         </>
       )}
