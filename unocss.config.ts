@@ -23,6 +23,9 @@ export default defineConfig({
         rotate: "infinite",
       },
     },
+    breakpoints: {
+      sm: "430px",
+    },
   },
   shortcuts: {
     "border-base": ["border border-gray-300 rounded outline-none px-1"],

@@ -51,19 +51,13 @@ export default function IndexPage() {
       <ul>
         {data &&
           // todo 翻页器
-          data.slice(0, 10).map((i, index) => {
+          data.slice(0, 10).map((i) => {
             return (
               <li
                 key={i}
-                className="border-base my-2 p-1 flex gap-2"
+                className="border-base my-2 px-2 py-1"
               >
-                <span className="min-w-4 text-end text-gray-400">
-                  {index + 1}
-                </span>
-                <Item
-                  className="flex-1"
-                  id={i}
-                />
+                <Item id={i} />
               </li>
             );
           })}

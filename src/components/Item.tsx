@@ -23,13 +23,13 @@ export default function Item(props: {
   });
 
   return (
-    <div className="com-item flex-1">
+    <div className="com-item">
       {data && (
         <>
           {data.title && (
-            <div className="flex items-center flex-wrap gap-2">
+            <div className="flex items-center flex-wrap gap-0 sm:gap-2">
               <a
-                className={`font-serif font-bold link ${props.showMore ? "text-xl" : ""}`}
+                className={`font-serif font-bold link mr-2 ${props.showMore ? "text-xl" : ""}`}
                 href={data.url}
                 target="_blank"
               >
@@ -61,10 +61,10 @@ export default function Item(props: {
             ></p>
           )}
           {["story", "poll"].includes(data.type) && (
-            <div className="text-sm text-gray-400 flex flex-wrap gap-2">
+            <div className="text-sm text-gray-400 flex flex-wrap gap-0 sm:gap-2">
               <Link
                 to={`/item/${data.id}`}
-                className="link"
+                className="link mr-2"
               >
                 {data.type === "story" && <span>{data.score} points by </span>}
                 <span className="text-gray-800! dark:text-gray-100!">
