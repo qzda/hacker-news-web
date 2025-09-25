@@ -48,7 +48,7 @@ export default defineConfig({
     presetWebFonts({
       provider: "none",
       fonts: {
-        serif: ["Times New Roman", "Times", "ui-serif", "serif"],
+        serif: ["PT Serif", "ui-serif", "serif"],
       },
     }),
     presetIcons({
