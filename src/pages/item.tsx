@@ -18,7 +18,7 @@ export default function ItemPage() {
 
   return (
     <div className="page-item">
-      <div className="mb-6">
+      <div className="content mb-6">
         <Item
           id={id}
           showMore
@@ -28,16 +28,15 @@ export default function ItemPage() {
       {data?.kids && (
         <div className="comments">
           <h2>Comments</h2>
-          <ul>
+          <ul className="">
             {/* todo 翻页器 */}
             {data.kids.slice(0, 10).map((kid) => {
               return (
                 <li
                   key={kid}
-                  className="border-base my-2 py-1 px-2"
+                  className="my-2"
                 >
                   <Item
-                    className="flex-1"
                     id={kid}
                     showMore
                   />
