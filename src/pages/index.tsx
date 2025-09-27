@@ -31,7 +31,9 @@ export default function IndexPage() {
             return (
               <h2
                 key={tab}
-                className={`font-bold text-lg link ${isActive ? "" : "text-gray-400"}`}
+                className={`font-bold text-lg link ${
+                  isActive ? "" : "text-gray-400"
+                }`}
                 onClick={() => {
                   setTabKey(tab as keyof typeof tabs);
                 }}
@@ -56,7 +58,7 @@ export default function IndexPage() {
             return (
               <li
                 key={i}
-                className="border-base my-2 px-2 py-1"
+                className="border-base my-2 px-3"
               >
                 <Item id={i} />
               </li>

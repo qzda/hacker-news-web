@@ -25,8 +25,8 @@ export default function Item(props: {
 
   return (
     <div className="com-item">
-      {data && (
-        <div>
+      {data && !data.deleted && (
+        <div className="my-2">
           {data.title && (
             <div className="flex items-center flex-wrap gap-0 sm:gap-2">
               <a
