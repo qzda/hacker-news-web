@@ -1,16 +1,13 @@
 export default function Footer() {
   return (
-    <footer className="my-4 p-2 text-center">
-      Created by{" "}
+    <footer className="my-4 p-2 text-sm flex justify-center items-center">
+      Power by{" "}
       <a
-        href="http://github.com/qzda"
+        href="https://app.netlify.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className="link"
-      >
-        <i className="i-carbon:logo-github" />
-        qzda
-      </a>
+        className="link text-5xl ml-2 i-logos:netlify"
+      ></a>
     </footer>
   );
 }

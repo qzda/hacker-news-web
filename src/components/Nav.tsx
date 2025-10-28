@@ -18,13 +18,13 @@ export default function Nav() {
   ];
 
   return (
-    <nav className="w-full mb-4 text-2xl font-bold py-4 flex justify-between">
-      <div>
+    <nav className="w-full mb-2 font-bold py-4 flex justify-between">
+      <div className="text-2xl">
         <NavLink to="/">
-          <h2 className="text-#ff6600">Hacker News</h2>
+          <h2 className="text-primary">Hacker News</h2>
         </NavLink>
       </div>
-      <ul className="flex gap-2">
+      <ul className="flex items-center gap-2">
         {navItems.map((item) => {
           return (
             <li key={item.to}>
@@ -37,6 +37,17 @@ export default function Nav() {
             </li>
           );
         })}
+
+        <li>
+          <a
+            href="https://github.com/qzda/hacker-news-web"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="icon-button"
+          >
+            <i className="i-carbon:logo-github" />
+          </a>
+        </li>
       </ul>
     </nav>
   );

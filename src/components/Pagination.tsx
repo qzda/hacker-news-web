@@ -64,7 +64,6 @@ export default function Pagination({
   return (
     <div className="pagination">
       <div className="flex items-center justify-between my-4">
-
         <div className="text-sm text-gray-600">
           Showing {startIndex}-{endIndex} of {total}
         </div>
@@ -74,7 +73,7 @@ export default function Pagination({
             className={`px-3 py-1 rounded transition-colors ${
               currentPage === 1
                 ? "text-gray-400 cursor-not-allowed"
-                : "btn hover:bg-#ff6600/10 text-#ff6600"
+                : "btn hover:bg-primary/10 text-primary"
             }`}
             onClick={handlePrev}
             disabled={currentPage === 1}
@@ -82,8 +81,8 @@ export default function Pagination({
             <i className="i-carbon-chevron-left" />
           </button>
 
-          <div className="flex items-center gap-1">
-            <span className="text-sm font-medium text-#ff6600 min-w-[40px] text-center">
+          <div className="flex items-center gap-1 text-center">
+            <span className="text-sm font-medium text-primary min-w-[40px] text-center">
               {currentPage}
             </span>
             <span className="text-gray-400">/</span>
@@ -104,7 +103,7 @@ export default function Pagination({
               className="w-16 px-2 py-1 text-center border-base text-sm"
             />
             <button
-              className="px-2 py-1 text-sm btn hover:bg-#ff6600/10 text-#ff6600"
+              className="px-2 py-1 text-sm btn hover:bg-#ff6600/10 text-primary"
               onClick={handleJump}
             >
               Go
@@ -112,10 +111,10 @@ export default function Pagination({
           </div>
 
           <button
-            className={`px-3 py-1 rounded transition-colors ${
+            className={`px-3 py-1 transition-colors ${
               currentPage >= totalPages
                 ? "text-gray-400 cursor-not-allowed"
-                : "btn hover:bg-#ff6600/10 text-#ff6600"
+                : "btn hover:bg-#ff6600/10 text-primary"
             }`}
             onClick={handleNext}
             disabled={currentPage >= totalPages}
@@ -127,4 +126,3 @@ export default function Pagination({
     </div>
   );
 }
-

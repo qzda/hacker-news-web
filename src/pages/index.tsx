@@ -19,7 +19,7 @@ export default function IndexPage() {
   const [tabKey, setTabKey] = useState<keyof typeof tabs>("Top Stories");
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedCount, setDisplayedCount] = useState(10);
-  
+
   const isMobile = useIsMobile();
   const loadingIndicatorRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +38,7 @@ export default function IndexPage() {
     const observer = new IntersectionObserver(
       (entries) => {
         const isIntersecting = entries[0]?.isIntersecting;
-        
+
         if (isIntersecting && displayedCount < data.length) {
           setTimeout(() => {
             setDisplayedCount((prev) => Math.min(prev + pageSize, data.length));
@@ -47,7 +47,7 @@ export default function IndexPage() {
       },
       {
         threshold: 0.1,
-        rootMargin: '0px',
+        rootMargin: "0px",
       }
     );
 
@@ -78,14 +78,7 @@ export default function IndexPage() {
 
   return (
     <div className="page-index">
-      <div className="flex items-center gap-4"
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 100,
-          backgroundColor: '#fff',
-        }}
-      >
+      <div className="flex items-center gap-4 sticky top-0 z-100 py-2 bg-white dark:bg-black">
         <div className="flex items-center gap-2">
           {Object.keys(tabs).map((tab) => {
             const isActive = tab === tabKey;
@@ -128,7 +121,7 @@ export default function IndexPage() {
 
       {/* 移动端：显示加载提示 */}
       {isMobile && data && displayedCount < data.length && (
-        <div 
+        <div
           ref={loadingIndicatorRef}
           className="text-center py-4 text-gray-500 text-sm pointer-events-none"
         >

@@ -40,7 +40,7 @@ export default function Item(props: {
               </a>
               {data.url && (
                 // todo 点击筛选短链
-                <span className="text-sm text-gray-400 op-75 hover:op-100 link">
+                <span className="text-sm text-gray-400 op-75 hover:op-100 link icon-button">
                   <i className="i-carbon:link" /> {shortUrl(data.url)}
                 </span>
               )}
@@ -54,9 +54,7 @@ export default function Item(props: {
                 className="link mr-2"
               >
                 {data.type === "story" && <span>{data.score} points by </span>}
-                <span className="text-gray-800! dark:text-gray-100!">
-                  {data.by}{" "}
-                </span>
+                <span className="font-bold">{data.by} </span>
                 <span title={new Date(data.time * 1000).toLocaleString()}>
                   {timeago.format(new Date(data.time * 1000))}
                 </span>
